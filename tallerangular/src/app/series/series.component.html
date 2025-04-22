@@ -1,0 +1,84 @@
+
+<main class="container">
+  <div class = "row">
+  <div class="col">    
+    <table class="table table-striped">
+      <thead class="table-dark">
+          <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Channel</th>
+              <th>Seasons</th>
+          </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let s of series" (click)="onSelect(s)">
+          <td>{{ s.id }}</td>
+          <td>{{ s.name }}</td>
+          <td>{{ s.channel }}</td>
+          <td>{{ s.seasons }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="col">
+
+    <div class="col" *ngIf="selectedSerie">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody id="Información">
+          <!-- Fila de la imagen -->
+          <tr>
+            <td class="text-center">
+              <img
+                [src]="selectedSerie.image"
+                [alt]="selectedSerie.name"
+                width="500"
+                height="500"
+                style="object-fit: cover;"
+                class="mb-3"
+              />
+            </td>
+          </tr>
+          <!-- Fila del nombre en negrita -->
+          <tr>
+            <td>
+              <strong>{{ selectedSerie.name }}</strong>
+            </td>
+          </tr>
+          <!-- Fila de la descripción -->
+          <tr>
+            <td>
+              {{ selectedSerie.description }}
+            </td>
+          </tr>
+          <!-- Fila de la URL -->
+          <tr>
+            <td>
+              <a [href]="selectedSerie.url" target="_blank">Ver más
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>   
+</div>
+
+<div class="mt-4">
+  <h5>
+    Seasons Average:
+    <span class="badge bg-secondary">
+      {{ averageSeasons }}
+    </span>
+  </h5>
+</div>
+
+</main>
